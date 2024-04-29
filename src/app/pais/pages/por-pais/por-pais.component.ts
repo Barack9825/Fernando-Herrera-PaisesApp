@@ -26,6 +26,9 @@ export class PorPaisComponent {
       }
     );
   }
-
+  sugerencias(termino: string) {
+    this.hayError = false;
+    
+  }
   constructor(private paisSevice: PaisService) {}
 }
