@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Country } from '../../intefaces/pais.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pais-tabla',
@@ -9,6 +10,8 @@ import { Country } from '../../intefaces/pais.interface';
 })
 export class PaisTablaComponent {
 
+
+  constructor(public router:Router){}  
   @Input() paises: Country[] = []
   
 }
