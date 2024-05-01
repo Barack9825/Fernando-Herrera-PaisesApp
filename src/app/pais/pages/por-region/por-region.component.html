@@ -5,18 +5,19 @@
 
 <h5>Seleccione la región</h5>
 
+<!--  [ngClass]="{
+        'btn-primary': regionActiva === region,
+        'btn-outline-primary': regionActiva !== region
+      }" -->
+
 <div class="row">
   <div class="col">
     <button
       *ngFor="let region of regiones"
-      [ngClass]="{
-        'btn-primary': regionActiva === region,
-        'btn-outline-primary': regionActiva !== region
-      }"
-      class="btn"
+      [class]="getClaseCss(region)"
       (click)="activarRegion(region)"
     >
-      {{ region }}
+      {{ region | titlecase }}
     </button>
   </div>
 </div>
