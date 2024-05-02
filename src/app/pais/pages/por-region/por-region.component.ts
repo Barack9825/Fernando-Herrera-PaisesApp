@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { Country } from '../../intefaces/pais.interface';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-por-region',
@@ -14,7 +18,10 @@ import { Component } from '@angular/core';
 export class PorRegionComponent {
   regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
   regionActiva: string = '';
-  constructor() {}
+  hayError: boolean = false;
+  paises: Country[] = [];
+
+  constructor(private paisService: PaisService) {}
 
   getClaseCss(region: string): string {
     return region === this.regionActiva
@@ -23,6 +30,11 @@ export class PorRegionComponent {
   }
 
   activarRegion(region: string) {
+    if (region===this.regionActiva){return}
     this.regionActiva = region;
+    this.paises = [];
+    this.paisService.getPaisPorRegion(region).subscribe((paises) => {
+      this.paises = paises;
+    });
   }
 }
