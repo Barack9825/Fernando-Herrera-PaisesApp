@@ -22,7 +22,7 @@ export class VerPaisComponent implements OnInit {
         switchMap(({ id }) => this.paisService.getPaisPorAplpha(id)),
         tap(console.log)
       )
-      .subscribe((pais:Country[]) => (this.pais = pais[0]));
+      .subscribe((pais:Country) => (this.pais = pais));
 
     /* this.activateRoute.params.subscribe(({ id }) => {
       this.paisService.getPaisPorAplpha(id).subscribe((pais) => {
